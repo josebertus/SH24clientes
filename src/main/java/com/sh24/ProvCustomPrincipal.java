@@ -19,6 +19,7 @@ import com.vaadin.ui.Label;
 import com.vaadin.ui.Panel;
 import com.vaadin.ui.UI;
 import com.vaadin.ui.VerticalLayout;
+import com.vaadin.ui.Window;
 import com.vaadin.ui.themes.ValoTheme;
 
 import lombok.Getter;
@@ -68,9 +69,9 @@ public class ProvCustomPrincipal extends CustomComponent {
 		Image image = new Image(null, res);
 		image.setHeight("30px");
 		
-		Resource resMenu = new ThemeResource("img/menu.png");
+		/*Resource resMenu = new ThemeResource("img/menu.png");
 		Image imageMenu = new Image(null, resMenu);
-		imageMenu.setHeight("28px");
+		imageMenu.setHeight("28px");*/
 		
 	
 		
@@ -90,7 +91,7 @@ public class ProvCustomPrincipal extends CustomComponent {
 		String usuario = (String) UI.getCurrent().getSession().getAttribute("user");
 		
 
-		String idsesion = "&nbsp;[&nbsp;"+(String) UI.getCurrent().getSession().getSession().getId()+"&nbsp;]&nbsp;&nbsp;";
+		/*String idsesion = "&nbsp;[&nbsp;"+(String) UI.getCurrent().getSession().getSession().getId()+"&nbsp;]&nbsp;&nbsp;";
 		String usunombre = "&nbsp;[&nbsp;"+(String) UI.getCurrent().getSession().getAttribute("username")+"&nbsp;]&nbsp;&nbsp;";
 		String tipousuario = "<b>&nbsp;[&nbsp;"+(String) UI.getCurrent().getSession().getAttribute("tipousuario")+"&nbsp;]&nbsp;&nbsp;</b>";
 		StringBuffer strb = new StringBuffer();   
@@ -114,12 +115,12 @@ public class ProvCustomPrincipal extends CustomComponent {
 		}
 		lbluser.setCaption(strb.toString());   
 		lbluser.setCaptionAsHtml(true);      
-		
+		*/
 
-		logout = new Button("Logout");
+		logout = new Button("Desconectar");
 		logout.addClickListener((e) -> doLogout());
 		logout.setStyleName(ValoTheme.BUTTON_DANGER);
-		logout.setWidth("70px");
+		logout.setWidth("90px");
 		
 
 
@@ -134,7 +135,7 @@ public class ProvCustomPrincipal extends CustomComponent {
 		//		|| UI.getCurrent().getSession().getAttribute("entorno").equals("TEST" ) ) {
 
 		menuPrincipal = new ProvMenuPrincipal();
-		menuPrincipal.menuOpcionesBoton.addComponent(imageMenu);
+		//menuPrincipal.menuOpcionesBoton.addComponent(imageMenu);
 		barraH.addComponent(menuPrincipal);
 		
 		//}
@@ -232,8 +233,7 @@ public class ProvCustomPrincipal extends CustomComponent {
 
 		};
 		ConfirmDialog.setFactory(df);		
-    	ConfirmDialog.show(UI.getCurrent(), "LOGOUT", "Seguro que desea desconectarse de la sesión ? \n"+
-    	"\nSe PERDERÁN los datos que no se hayan guardado",
+    	ConfirmDialog.show(UI.getCurrent(), "LOGOUT", "Seguro que desea desconectarse de la sesión ?",
     	        "Si", "No", new ConfirmDialog.Listener() {
 
     	            public void onClose(ConfirmDialog dialog) {
@@ -245,6 +245,7 @@ public class ProvCustomPrincipal extends CustomComponent {
     	                	UI.getCurrent().getSession().close();
     	                	getUI().close();
     	            		getUI().getPage().reload();
+    	            		
     	                } else {
     	                    // User did not confirm
     	                    

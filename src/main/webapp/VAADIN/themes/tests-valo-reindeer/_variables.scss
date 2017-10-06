@@ -179,12 +179,12 @@ $v-panel-border: 0;
 	}
 	
 	.mainlogo-panel {
-    
     @include animation(valo-animate-in-slide-down 1000ms 10ms backwards, valo-animate-in-fade 600ms 100ms backwards);
     z-index: 2;
-    background-color: #171695;
+    background-color: #FFFFFF;
     height:200%;
     border-radius: 0px;
+    
 	box-shadow: 0 0px 0px black;
 	-webkit-box-shadow: 0 0px 0px black;
 	border: 0px solid black;

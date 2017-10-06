@@ -1,0 +1,9 @@
+@import "addons.scss";
+@import "sh24clientes.scss";
+
+/* This file prefixes all rules with the theme name to avoid causing conflicts with other themes. */
+/* The actual styles should be defined in sh24clientes.scss */
+.sh24clientes {
+  @include addons;
+  @include sh24clientes;
+}

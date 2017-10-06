@@ -11,11 +11,11 @@ import org.springframework.boot.context.properties.ConfigurationProperties;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Primary;
 
-import com.csi_ti.itaca.custom.general.api.service.GeneralBusinessService;
-import com.csi_ti.itaca.custom.general.api.service.GeneralBusinessServiceProxy;
-import com.csi_ti.itaca.custom.general.api.service.GeneralBusinessServiceProxyRestClient;
-import com.csi_ti.itaca.custom.general.server.jdbc.util.Constantes;
-import com.csi_ti.itaca.custom.general.server.service.GeneralBusinessServiceImpl;
+import com.servihogar.custom.general.api.service.GeneralBusinessService;
+import com.servihogar.custom.general.api.service.GeneralBusinessServiceImpl;
+import com.servihogar.custom.general.api.service.GeneralBusinessServiceProxy;
+import com.servihogar.custom.general.api.service.GeneralBusinessServiceProxyRestClient;
+import com.servihogar.custom.general.server.jdbc.util.Constantes;
 
 import lombok.AccessLevel;
 import lombok.Getter;
@@ -80,7 +80,7 @@ public class ServletInitializer extends org.springframework.boot.web.support.Spr
 	protected SpringApplicationBuilder configure(SpringApplicationBuilder application) {
 		
 		System.out.println(">>> SpringApplicationBuilder");
-		return application.sources(Sh24proveedoresApplication.class);
+		return application.sources(Sh24clientesApplication.class);
 	}
 
 }

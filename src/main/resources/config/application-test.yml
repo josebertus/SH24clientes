@@ -2,7 +2,7 @@ logging:
   file: ${catalina.base}/logs/sh24-frontend-web-test.log
   level.: ERROR
   level:
-    com.csi_ti.itaca: DEBUG    
+    com.servihogar: DEBUG    
     com.vaadin.spring.navigator.SpringViewProvider: DEBUG
 test:
   integration:

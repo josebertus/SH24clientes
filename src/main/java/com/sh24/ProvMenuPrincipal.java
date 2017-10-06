@@ -99,7 +99,7 @@ public class ProvMenuPrincipal extends CustomComponent  {
 		
 		gridMenu.addComponent(opcion0,0,0,5,0);
 		gridMenu.addComponent(new HorizontalRule(),0,1,5,1);
-		gridMenu.setComponentAlignment(opcion0, Alignment.MIDDLE_CENTER);
+		//gridMenu.setComponentAlignment(opcion0, Alignment.MIDDLE_CENTER);
 		
 		
 		
