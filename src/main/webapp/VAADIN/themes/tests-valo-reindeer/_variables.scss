@@ -20,6 +20,37 @@ $v-panel-border: 0;
 @import "../valo/valo";
 
 
+/* Common settings */
+.toggledisplay {
+    .enoughspace, .notenoughspace {
+        color: white;
+        padding: 5px;
+    }
+
+    .notenoughspace { /* Really small */
+        background: red;
+        font-weight: normal;
+        font-size: 10px;
+        line-height: 15px;
+    }
+
+    .enoughspace { /* Really big */
+        background: darkgreen;
+        font-weight: bold;
+        font-size: 40px;
+        line-height: 30px;
+    }
+}
+
+/* Quite little space */
+.toggledisplay[width-range~="0-499px"] {
+    .enoughspace    {display: none}
+}
+
+/* Plenty of space */
+.toggledisplay[width-range~="500px-"] {
+    .notenoughspace {display: none}
+}
 
    
    	/* ------------------------------- */
@@ -983,6 +1014,10 @@ $v-panel-border: 0;
     font-weight: bold;
     color: darkblue;
 	}    
+	
+	
+	
+
 }
 
 	

@@ -141,6 +141,8 @@ public class Sh24clientesUI extends UI {
 	@Override
 	protected void init(VaadinRequest request) {
 		
+		System.out.println("El usuadmin es : " + usuAdmin);
+		System.out.println("Service2: " + service2.toString());
 		System.out.println(">>>>>>>>> " + entrada + " --> Sh24clientes" + request.getParameter("exp"));
 		
 		if ( request.getParameter("exp")==null || request.getParameter("exp")=="") {

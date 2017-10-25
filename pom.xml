@@ -4,11 +4,11 @@
 	<modelVersion>4.0.0</modelVersion>
 
 	<groupId>com.sh24</groupId>
-	<artifactId>Sh24clientes</artifactId>
+	<artifactId>Sh24clientesweb</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
 	<packaging>war</packaging>
 
-	<name>Sh24clientes</name>
+	<name>Sh24clientesweb</name>
 	<description>Sh24 Web Clientes</description>
 	
 	<parent>
