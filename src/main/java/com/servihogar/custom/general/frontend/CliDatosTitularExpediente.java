@@ -9,6 +9,7 @@ import com.vaadin.annotations.Theme;
 import com.vaadin.data.Item;
 import com.vaadin.data.Property;
 import com.vaadin.navigator.ViewChangeListener.ViewChangeEvent;
+import com.vaadin.server.FontAwesome;
 import com.vaadin.shared.ui.label.ContentMode;
 import com.vaadin.ui.Alignment;
 import com.vaadin.ui.Button;
@@ -19,9 +20,12 @@ import com.vaadin.ui.Label;
 import com.vaadin.ui.Panel;
 import com.vaadin.ui.Table;
 import com.vaadin.ui.UI;
+import com.vaadin.ui.Button.ClickEvent;
+import com.vaadin.ui.Button.ClickListener;
+import com.vaadin.ui.themes.ValoTheme;
 
 @Theme("tests-valo-reindeer")
-public class ProvDatosTitularExpediente extends Panel implements ItacaView {
+public class CliDatosTitularExpediente extends Panel implements ItacaView {
 
 
 	public ArrayList lsCon = new ArrayList();
@@ -32,6 +36,7 @@ public class ProvDatosTitularExpediente extends Panel implements ItacaView {
     
 	Table tableTel = new Table();
 	Label lCaption = new Label();
+	Button btVolver = new Button();
 	public Label dgenPolizaTitular = new Label();
 	Label dgenContrato =new Label("Compañía:");
 	Label dgenCia =new Label("Cia:");
@@ -53,7 +58,7 @@ public class ProvDatosTitularExpediente extends Panel implements ItacaView {
 	private static final long serialVersionUID = -304344441663815443L;
 
 	// constructor inicial
-	public ProvDatosTitularExpediente(List<Map> retorno) {
+	public CliDatosTitularExpediente(List<Map> retorno) {
 
 		String[] columnsexp ={"Descripcion","Telefono"};
 		Object[] typesexp = {String.class,String.class};
@@ -82,7 +87,7 @@ public class ProvDatosTitularExpediente extends Panel implements ItacaView {
 		dgenTitular.setCaptionAsHtml(true);
 		dgenTitular.setContentMode(ContentMode.HTML);
 		dgenTitular.setValue("<h style='font-weight: normal;'>"+retorno.get(0).get("TITULAR").toString()+" </h>");
-		dtitLayout.addComponent(dgenTitular,3,0,7,0);
+		dtitLayout.addComponent(dgenTitular,3,0,6,0);
 		
 		dtitLayout.addComponent(new Label("Póliza"),0,1);
 		dgenPoliza.setCaptionAsHtml(true);
@@ -101,6 +106,25 @@ public class ProvDatosTitularExpediente extends Panel implements ItacaView {
 		dgenContrato.setContentMode(ContentMode.HTML);
 		dgenContrato.setValue("<h style='font-weight: normal;'>"+ retorno.get(0).get("CONTRATO").toString() +" </h>"	);		
 		dtitLayout.addComponent(dgenContrato,1,2,4,2);
+		
+		dtitLayout.addComponent(btVolver,7,0);
+		btVolver.setStyleName(ValoTheme.BUTTON_DANGER);
+		dtitLayout.setComponentAlignment(btVolver, Alignment.MIDDLE_RIGHT);
+		btVolver.setIcon(FontAwesome.CLOSE);
+		btVolver.addClickListener(new ClickListener() {
+			
+			@Override
+			public void buttonClick(ClickEvent event) {
+				// TODO Auto-generated method stub
+				
+				
+				UI.getCurrent().getNavigator().navigateTo("CliPantallaBusquedaExpedientes");	 
+			}
+		});	
+		
+		if ( UI.getCurrent().getSession().getAttribute("exp")!=null) {
+			btVolver.setVisible(false);
+		}
 		
 		dtitLayout.setWidth("100%");
 		dtitLayout.setColumnExpandRatio(0,7);

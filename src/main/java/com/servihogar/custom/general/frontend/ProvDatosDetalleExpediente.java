@@ -31,7 +31,7 @@ public class ProvDatosDetalleExpediente extends Panel implements ItacaView {
 	
 	//public CheckBox ckRevisar = new CheckBox("Revisar");
 	
-	private ProvPantallaConsultaExpediente provPantallaConsultaExpedienteInicial;	
+	private CliPantallaConsultaExpediente provPantallaConsultaExpedienteInicial;	
 	private static GeneralBusinessServiceImpl service;
 	    
     Property.ValueChangeListener listenerChgVip;
@@ -53,7 +53,7 @@ public class ProvDatosDetalleExpediente extends Panel implements ItacaView {
 	private static final long serialVersionUID = -304344441663815443L;
 
 	// constructor inicial
-	public ProvDatosDetalleExpediente( ProvPantallaConsultaExpediente provPantallaConsultaExpediente, List<Map> retorno, List<Map> detalle ) {
+	public ProvDatosDetalleExpediente( CliPantallaConsultaExpediente provPantallaConsultaExpediente, List<Map> retorno, List<Map> detalle ) {
 
 		provPantallaConsultaExpedienteInicial = provPantallaConsultaExpediente;
 		service = (GeneralBusinessServiceImpl) UI.getCurrent().getSession().getAttribute("service");

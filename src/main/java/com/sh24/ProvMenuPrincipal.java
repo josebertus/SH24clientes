@@ -202,7 +202,7 @@ public class ProvMenuPrincipal extends CustomComponent  {
 			@Override
 			public void layoutClick(LayoutClickEvent event) {
 				// TODO Auto-generated method stub
-				UI.getCurrent().getNavigator().navigateTo("ProvPantallaBusquedaExpedientes");	 
+				UI.getCurrent().getNavigator().navigateTo("CliPantallaBusquedaExpedientes");	 
 			}
 		});
         

@@ -28,12 +28,12 @@ import com.vaadin.ui.themes.ValoTheme;
 
 
 @Theme("tests-valo-reindeer")
-public class ProvPantallaConsultaExpediente extends Panel implements ItacaView {
+public class CliPantallaConsultaExpediente extends Panel implements ItacaView {
 
 	public TabSheet tabExp = new TabSheet();
 	private static GeneralBusinessServiceImpl service;
 	
-	ProvDatosTitularExpediente provDatosTitularExpediente;
+	CliDatosTitularExpediente provDatosTitularExpediente;
 	ProvDatosDetalleExpediente provDatosDetalleExpediente;
 	ProvDatosObservacionesExpediente provDatosObservacionesExpediente;
 	ProvDatosComunicadosExpediente provDatosComunicadosExpediente;
@@ -48,7 +48,7 @@ public class ProvPantallaConsultaExpediente extends Panel implements ItacaView {
 	
 	VerticalLayout layoutPrincipal = new VerticalLayout();
 	
-	public ProvPantallaConsultaExpediente () {
+	public CliPantallaConsultaExpediente () {
 		
 		//System.out.println("entramos en el constructor");
 		service = (GeneralBusinessServiceImpl) UI.getCurrent().getSession().getAttribute("service");
@@ -100,7 +100,7 @@ public class ProvPantallaConsultaExpediente extends Panel implements ItacaView {
 		
 		
 		provDatosDetalleExpediente = new ProvDatosDetalleExpediente(this, valor, valorDetalle);
-		provDatosTitularExpediente = new ProvDatosTitularExpediente(valor);
+		provDatosTitularExpediente = new CliDatosTitularExpediente(valor);
 		provDatosObservacionesExpediente = new ProvDatosObservacionesExpediente();
 		
 		//Map<String, Object> retornoComunicados = new HashMap<String, Object>(null);

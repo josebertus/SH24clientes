@@ -45,13 +45,13 @@ public class ProvDatosComunicadosExpediente extends Panel implements ItacaView {
     //Button btComunicado = new Button("Nuevo Comunicado");
     
     ProvVenComunicadoExpediente provVenComunicadoExpediente;
-    ProvPantallaConsultaExpediente provPantallaconsultaExpedienteInicial;
+    CliPantallaConsultaExpediente provPantallaconsultaExpedienteInicial;
 
     private static GeneralBusinessServiceImpl service;
 	private static final long serialVersionUID = -304344441663815443L;
 
 	// constructor inicial
-	public ProvDatosComunicadosExpediente( Map<String, Object> retorno, ProvPantallaConsultaExpediente provPantallaConsultaExpediente ) {
+	public ProvDatosComunicadosExpediente( Map<String, Object> retorno, CliPantallaConsultaExpediente provPantallaConsultaExpediente ) {
 
 		service = (GeneralBusinessServiceImpl) UI.getCurrent().getSession().getAttribute("service");
 		provPantallaconsultaExpedienteInicial = provPantallaConsultaExpediente;

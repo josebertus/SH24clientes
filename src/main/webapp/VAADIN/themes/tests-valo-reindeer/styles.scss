@@ -3,4 +3,18 @@
 
 .tests-valo-reindeer {
    @include valotest;
+   
+   	.my_bg_style {
+     color:red;
+     border:1px solid blue;  
+	}
+	
+	.fondo_rojo {
+	   background-color:red;
+	   background-red;
+	}
+	
+	
 }
+
+

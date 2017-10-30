@@ -20,6 +20,14 @@ $v-panel-border: 0;
 @import "../valo/valo";
 
 
+.my_bg_style {
+ border:1px solid blue;
+ background: red;
+ background-color:red;
+ color:red;  
+}
+	
+
 /* Common settings */
 .toggledisplay {
     .enoughspace, .notenoughspace {
@@ -1010,14 +1018,10 @@ $v-panel-border: 0;
     	border:1px solid red;
     }
 	.v-table .v-table-footer-container {
-	font-size:12px;
-    font-weight: bold;
-    color: darkblue;
-	}    
-	
-	
-	
-
+		font-size:12px;
+	    font-weight: bold;
+	    color: darkblue;
+	}
 }
 
 	

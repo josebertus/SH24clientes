@@ -26,7 +26,7 @@ import lombok.Getter;
 
 @UIScope
 @SpringComponent
-public class ProvCustomPrincipal extends CustomComponent {
+public class CliCustomPrincipal extends CustomComponent {
 	
 	private static final long serialVersionUID = -641725931242567777L;
 
@@ -91,31 +91,37 @@ public class ProvCustomPrincipal extends CustomComponent {
 		String usuario = (String) UI.getCurrent().getSession().getAttribute("user");
 		
 
-		/*String idsesion = "&nbsp;[&nbsp;"+(String) UI.getCurrent().getSession().getSession().getId()+"&nbsp;]&nbsp;&nbsp;";
-		String usunombre = "&nbsp;[&nbsp;"+(String) UI.getCurrent().getSession().getAttribute("username")+"&nbsp;]&nbsp;&nbsp;";
-		String tipousuario = "<b>&nbsp;[&nbsp;"+(String) UI.getCurrent().getSession().getAttribute("tipousuario")+"&nbsp;]&nbsp;&nbsp;</b>";
-		StringBuffer strb = new StringBuffer();   
-		
-		if ( UI.getCurrent().getSession().getAttribute("entorno").equals("TEST" )) {
-				strb.append("<p style='background-color:orange;height:15px;font-size:10px'><b>Usuario:&nbsp;&nbsp;</b>")
+		System.out.println("exp: >>>>>>>> " + UI.getCurrent().getSession().getAttribute("exp"));
+		if ( UI.getCurrent().getSession().getAttribute("exp")==null) {
+			String idsesion = "&nbsp;[&nbsp;"+(String) UI.getCurrent().getSession().getSession().getId()+"&nbsp;]&nbsp;&nbsp;";
+			String usunombre = "&nbsp;[&nbsp;"+(String) UI.getCurrent().getSession().getAttribute("username")+"&nbsp;]&nbsp;&nbsp;";
+			String tipousuario = "<b>&nbsp;[&nbsp;"+(String) UI.getCurrent().getSession().getAttribute("tipousuario")+"&nbsp;]&nbsp;&nbsp;</b>";
+			StringBuffer strb = new StringBuffer();   
+			
+			if ( UI.getCurrent().getSession().getAttribute("entorno").equals("TEST" )) {
+					strb.append("<p style='background-color:orange;height:15px;font-size:10px'><b>Usuario:&nbsp;&nbsp;</b>")
+					.append(usuario)
+					.append(usunombre)
+					.append(tipousuario)
+					
+					//.append(idsesion)
+					.append("</p>");
+			} else {
+				strb.append("<p style='height:25px;font-size:10px'><b>Usuario:&nbsp;&nbsp;</b>")
 				.append(usuario)
 				.append(usunombre)
 				.append(tipousuario)
 				
-				//.append(idsesion)
 				.append("</p>");
-		} else {
-			strb.append("<p style='height:25px;font-size:10px'><b>Usuario:&nbsp;&nbsp;</b>")
-			.append(usuario)
-			.append(usunombre)
-			.append(tipousuario)
+				
+			}
 			
-			.append("</p>");
 			
+		
+			lbluser.setCaption(strb.toString());   
+			lbluser.setCaptionAsHtml(true);
 		}
-		lbluser.setCaption(strb.toString());   
-		lbluser.setCaptionAsHtml(true);      
-		*/
+		
 
 		logout = new Button("Desconectar");
 		logout.addClickListener((e) -> doLogout());
