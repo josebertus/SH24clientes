@@ -1,5 +1,9 @@
 package com.sh24;
 
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.vaadin.dialogs.ConfirmDialog;
 import org.vaadin.dialogs.DefaultConfirmDialogFactory;
@@ -19,7 +23,6 @@ import com.vaadin.ui.Label;
 import com.vaadin.ui.Panel;
 import com.vaadin.ui.UI;
 import com.vaadin.ui.VerticalLayout;
-import com.vaadin.ui.Window;
 import com.vaadin.ui.themes.ValoTheme;
 
 import lombok.Getter;
@@ -69,9 +72,9 @@ public class CliCustomPrincipal extends CustomComponent {
 		Image image = new Image(null, res);
 		image.setHeight("30px");
 		
-		/*Resource resMenu = new ThemeResource("img/menu.png");
-		Image imageMenu = new Image(null, resMenu);
-		imageMenu.setHeight("28px");*/
+		Resource resMenu;
+		Image imageMenu = null;
+
 		
 	
 		
@@ -80,11 +83,10 @@ public class CliCustomPrincipal extends CustomComponent {
 		menuLayout.setMargin(false);
 		menuLayout.addComponent(image);
 		menuLayout.setComponentAlignment(image, Alignment.TOP_LEFT);
-		
-		
 		menuLayout.setStyleName("menu-panel");
-		//menuLayout.setHeight("40px");
 		menuLayout.setWidth("100%");
+		
+		
 
 
 		Label lbluser = new Label();
@@ -134,39 +136,46 @@ public class CliCustomPrincipal extends CustomComponent {
 		barraH.setWidth("100%");
 		barraH.setHeight("32px");
 		
-
 		
-		// Añadimos el menú principal de momento también solo para AMA_ADMON
-		//if (usuario.toUpperCase().equals("AMA_ADMON") || usuario.toUpperCase().equals("RVALLSBA")
-		//		|| UI.getCurrent().getSession().getAttribute("entorno").equals("TEST" ) ) {
-
-		menuPrincipal = new ProvMenuPrincipal();
-		//menuPrincipal.menuOpcionesBoton.addComponent(imageMenu);
-		barraH.addComponent(menuPrincipal);
+		HorizontalLayout menuCliente = new HorizontalLayout();
 		
-		//}
-			
-		/*TimerTask tt = new TimerTask() {
+		//menuCliente.addComponent(lbluser);
+		//menuCliente.setComponentAlignment(lbluser, Alignment.TOP_LEFT);
 
-		    @Override
-		    public void run() {
-		        try {
-		        	System.out.println("Entramos timer");
-		        } catch (Exception ex) {
-		        	System.out.println("Exception timer");
-		        }
-		    }
-		};
-		Timer t = new Timer(true);
-		t.scheduleAtFixedRate(tt, 0, 3000);		
+		// LAYOUT LA BARRA DEL CLIENTE
+		HashMap mapCSS = (HashMap) UI.getCurrent().getSession().getAttribute("cabecera");
+		if ( mapCSS==null) {
+		}
+		else {
+				List<Map> valorCSS = (List<Map>) mapCSS.get("RETURN");
+				for (Map map : valorCSS) {
+					
+					resMenu = new ThemeResource("img/" + map.get("IMGLOGO"));
+					imageMenu = new Image(null, resMenu);
+					imageMenu.setHeight("34px");
+					
+					menuCliente.setStyleName("menu-panel-cliente");
+					menuCliente.setPrimaryStyleName("estilo_" + map.get("AGRUPACION").toString().toUpperCase() );
+					//layout.setPrimaryStyleName("fondo_rojo");
+					
+					Label lblCabecera = new Label(map.get("TEXTOCABECERA").toString());
+					menuCliente.addComponent(lblCabecera);
+					lblCabecera.setPrimaryStyleName("estilo_" + map.get("AGRUPACION").toString().toUpperCase() );
+					menuCliente.setComponentAlignment(lblCabecera, Alignment.MIDDLE_LEFT);
+					menuCliente.setHeight("38px");
+					/*contrato.addItem(map.get("CDCONTRA"));
+					contrato.setItemCaption(map.get("CDCONTRA"),(String)map.get("NBCONTRA"));*/
+					
+				}
+				menuCliente.setMargin(false);
+				if ( imageMenu!=null) {
+					menuCliente.addComponent(imageMenu);
+					menuCliente.setComponentAlignment(imageMenu, Alignment.MIDDLE_RIGHT);
+					menuCliente.setWidth("100%");
+				}
+		}
+		
 
-		barraH.addComponent(imageMensajes);
-		barraH.setComponentAlignment(imageMensajes,Alignment.MIDDLE_LEFT);*/
-			
-		/*menuLayout.addComponent(lblProveedores);
-		menuLayout.setComponentAlignment(lblProveedores, Alignment.MIDDLE_LEFT);*/
-		menuLayout.addComponent(lbluser);
-		menuLayout.setComponentAlignment(lbluser, Alignment.TOP_LEFT);
 		
 		//barraH.addComponent(lbluser);
 		barraH.addComponent(logout);
@@ -181,21 +190,13 @@ public class CliCustomPrincipal extends CustomComponent {
 		
 		logout.setVisible(true);
 		logout.setTabIndex(-1);
-		
-
 		menuLayout.addComponent(barraH);
 		menuLayout.setComponentAlignment(barraH, Alignment.TOP_LEFT);
-
-		
-	
-
 		viewContainer = new Panel();
 		viewContainer.setStyleName("views-panel");
 		viewContainer.setSizeFull();
-
-
-		
 		layout.addComponent(menuLayout);
+		layout.addComponent(menuCliente);
 		layout.addComponent(viewContainer);
 		  
 		layout.setExpandRatio(viewContainer,1);

@@ -570,22 +570,32 @@ public class Sh24clientesUI extends UI {
 					// plataforma );
 					UI.getCurrent().getSession().setAttribute("origen", "WEB");
 
-					// Cargamos listas
-					/*
-					 * PAC_SHWEB_PROVEEDORES llamadaListas = new
-					 * PAC_SHWEB_PROVEEDORES(conn); respuesta = null; try {
-					 * //respuesta =
-					 * llamada.ejecutaPAC_SHWEB_LOGIN__F_LOGIN(usuario.getValue(
-					 * )); respuesta = llamadaListas.
-					 * ejecutaPAC_SHWEB_PROVEEDORES__F_LISTA_ESTADOS_EXPEDIENTE(
-					 * "P"); Map<String, Object> retListas= new HashMap<String,
-					 * Object>(respuesta); List<Map> valorRespuesta =
-					 * (List<Map>) retListas.get("REGISTROS");
-					 * UI.getCurrent().getSession().setAttribute(
-					 * "estadosExpediente", valorRespuesta); } catch (Exception
-					 * e) { // TODO Auto-generated catch block
-					 * e.printStackTrace(); }
-					 */
+					// Cargamos los estilos CSS
+					PAC_SHWEB_LISTAS llamadaListas = null;
+					try {
+						llamadaListas = new PAC_SHWEB_LISTAS(service2.plsqlDataSource.getConnection());
+					} catch (SQLException e1) {
+						// TODO Auto-generated catch block
+						e1.printStackTrace();
+					}
+					HashMap respuestaLista = null;
+					
+					// Recuperamos los datos del Expediente;
+					try {
+						respuestaLista = llamadaListas.ejecutaPAC_SHWEB_LISTAS__F_QUERY(""
+								+ " SELECT SH.AGRUPACION, SH.IMGLOGO, SH.TEXTOCABECERA"
+								+ " FROM SHWEB_CLIENTES_ESTILOS SH , GE_USERS U "
+								+ " WHERE SH.AGRUPACION = U.AGRUPACION "
+								+ " AND U.CDUSUARI = '" + usuario.getValue().toString().toUpperCase() + "' ");
+						
+						Map<String, Object> mapListas = new HashMap<String, Object>(respuestaLista);
+						UI.getCurrent().getSession().setAttribute("cabecera",mapListas);
+						
+						
+					} catch (Exception e) {
+						// TODO Auto-generated catch block
+						e.printStackTrace();
+					}					
 
 					if (retLogin.get("TIPOUSUARIO").toString().equals("S")) {
 						UI.getCurrent().getSession().setAttribute("tipousuario", "Supervisor");

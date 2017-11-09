@@ -514,47 +514,51 @@ public class CliPantallaBusquedaExpedientes extends PantallaBaseConInputOutput<V
 
 		flayout = new FormLayout();
 		flayout.addComponent(poliza);
-		flayout.addComponent(expediente);
+		flayout.addComponent(nif);
 		expediente.addValidator(new RegexpValidator("[0-9]*", "Expediente Sergihogar solo permite números"));
 		flayout.addComponent(nombre);
+		flayout.addComponent(apellidos);
 		flayout.addComponent(contrato);
-		flayout.addComponent(garantia);
-		flayout.addComponent(estado);
+		flayout.addComponent(telefono);
+		flayout.addComponent(direccion);
+		
 		
 
 		flayout2 = new FormLayout();
 		flayout2.setMargin(true);
-		flayout2.addComponent(nif);
+		flayout2.addComponent(expediente);
 		flayout2.addComponent(expedientecia);
-		flayout2.addComponent(apellidos);
+		flayout2.addComponent(movimientoEconomico);
+		flayout2.addComponent(tipo);
 		flayout2.addComponent(causa);
+		flayout2.addComponent(garantia);
+		flayout2.addComponent(estado);
+		
 		
 		//poliza.setWidth("180px");
 
 		
 
-		flayout2.addComponent(telefono);
+		
 
 		telefono.addValidator(new RegexpValidator("[0-9]*", "Teléfono solo permite números"));
 		telefono.setMaxLength(10);
 
-		flayout2.addComponent(direccion);
+		
 		//direccion.setWidth("180px");
 
 		flayout3 = new FormLayout();
 		flayout3.setMargin(true);
 		flayout3.addComponent(new Label(""));
-		flayout3.addComponent(movimientoEconomico);
 		movimientoEconomico.addValidator(new RegexpValidator("[0-9]*", "Movimiento económico solo permite números"));
 		flayout3.addComponent(numexpIni);
 		flayout3.addComponent(cierreIni);
 		flayout3.addComponent(fecexpIni);
-		flayout3.addComponent(tipo);
+		
 		
 
 		flayout4 = new FormLayout();
 		flayout4.setMargin(true);
-		flayout4.addComponent(new Label(""));
 		flayout4.addComponent(new Label(""));
 		flayout4.addComponent(numexpFin);
 		flayout4.addComponent(cierreFin);
@@ -674,25 +678,26 @@ public class CliPantallaBusquedaExpedientes extends PantallaBaseConInputOutput<V
 
 		// NAVEGACION CAMPOS
 		poliza.setTabIndex(1);
-		expediente.setTabIndex(2);
+		nif.setTabIndex(2);
 		nombre.setTabIndex(3);
-		contrato.setTabIndex(4);
-		garantia.setTabIndex(5);
-		estado.setTabIndex(6);
-		nif.setTabIndex(7);
-		expedientecia.setTabIndex(8);
-		apellidos.setTabIndex(9);
+		apellidos.setTabIndex(4);
+		contrato.setTabIndex(5);
+		telefono.setTabIndex(6);
+		direccion.setTabIndex(7);
+		expediente.setTabIndex(8);
+		expedientecia.setTabIndex(9);
+		movimientoEconomico.setTabIndex(10);
+		tipo.setTabIndex(11);
 		causa.setTabIndex(12);
-		telefono.setTabIndex(13);
-		direccion.setTabIndex(14);
-		movimientoEconomico.setTabIndex(15);
-		numexpIni.setTabIndex(16);
-		numexpFin.setTabIndex(17);
-		cierreIni.setTabIndex(18);
-		cierreFin.setTabIndex(19);
-		fecexpIni.setTabIndex(20);
-		fecexpFin.setTabIndex(21);
-		tipo.setTabIndex(22);
+		garantia.setTabIndex(13);
+		estado.setTabIndex(14);
+		numexpIni.setTabIndex(15);
+		numexpFin.setTabIndex(16);
+		cierreIni.setTabIndex(17);
+		cierreFin.setTabIndex(18);
+		fecexpIni.setTabIndex(19);
+		fecexpFin.setTabIndex(20);
+		
 		btFocus.setTabIndex(23);
 		btFocus.setStyleName("botoninvisible");
 
@@ -1083,7 +1088,7 @@ public class CliPantallaBusquedaExpedientes extends PantallaBaseConInputOutput<V
 			tableexp.setVisible(true);
 			tableexp.setSelectable(true);
 			tableexp.setImmediate(true);
-			tableexp.setPageLength((int) UI.getCurrent().getSession().getAttribute("resoluciony") / 40);
+			tableexp.setPageLength((int) UI.getCurrent().getSession().getAttribute("resoluciony") / 47);
 			// tableexp.setHeight("33%");
 
 			// System.out.println("Recuperamos el orden ?" +
